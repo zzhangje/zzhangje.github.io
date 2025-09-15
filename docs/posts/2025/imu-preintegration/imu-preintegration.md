@@ -9,7 +9,7 @@ tags:
   - math
 ---
 
-# Detailed derivation of On-Manifold IMU Preintegration
+# Derivation of On-Manifold IMU Preintegration
 
 > - C. Forster, L. Carlone, F. Dellaert, and D. Scaramuzza, “On-Manifold Preintegration for Real-Time Visual--Inertial Odometry,” _IEEE Trans. Robot._, vol. 33, no. 1, pp. 1–21, Feb. 2017, doi: [10.1109/TRO.2016.2597321](https://doi.org/10.1109/TRO.2016.2597321).
 > - Z. Yang and S. Shen, “Monocular Visual–Inertial State Estimation With Online Initialization and Camera–IMU Extrinsic Calibration,” IEEE Trans. Automat. Sci. Eng., vol. 14, no. 1, pp. 39–51, Jan. 2017, doi: 10.1109/TASE.2016.2550621.

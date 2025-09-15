@@ -16,6 +16,7 @@ plugins:
 
 nav:
   - Home: index.md
+  - Tags: tags.md
 
 theme:
   name: material
@@ -98,3 +99,4 @@ extra:
     analytics:
       provider: custom
       property: foobar
+    tags: [slam, control, math, hkust]
