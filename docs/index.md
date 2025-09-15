@@ -1,5 +1,2 @@
----
-nocomments: true
----
+# Blog
 
-# Home
