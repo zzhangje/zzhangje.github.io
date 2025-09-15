@@ -62,8 +62,11 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 
 markdown_extensions:
+  - admonition
   - attr_list
   - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.blocks.caption
   - pymdownx.critic
   - pymdownx.caret
