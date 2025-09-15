@@ -8,7 +8,7 @@ tags:
   - control
 ---
 
-# CoTiMo Planner Implementation Report
+# CoTiMo Planner Report
 
 CoTiMo represents Collision-Free Smooth Path Generation, Time-Optimal Path Parameterization, and Model Predictive Control Planner. It is a comprehensive solution for robotic motion planning.
 
