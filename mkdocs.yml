@@ -1,6 +1,5 @@
-site_name: ZhangzrJerry's Blog
-site_url: https://zzhangje.github.io/
-repo_url: https://github.com/zzhangje/posts
+site_name: zzhangje's posts
+repo_url: https://github.com/zzhangje/zzhangje.github.io
 edit_uri: edit/master/docs/
 
 plugins:  
