@@ -1,0 +1,83 @@
+site_name: ZhangzrJerry's Blog
+site_url: https://zzhangje.github.io/
+repo_url: https://github.com/zzhangje/posts
+edit_uri: edit/master/docs/
+
+plugins:  
+  - search
+  - blog:
+      blog_toc: true
+      post_dir: post
+
+nav:
+  - Home: blog/index.md
+
+theme:
+  name: material
+  custom_dir: overrides
+  palette:
+    - scheme: default
+      primary: 'light blue'
+      accent: 'light blue'
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: 'light blue'
+      accent: 'light blue'
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  language: en
+  favicon: favicon.ico
+  logo: favicon.ico
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.path
+    - navigation.tracking
+    - navigation.sidebar
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.image.lightbox
+    - content.card
+
+extra_javascript:
+  - js/mathjax-config.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - codehilite:
+      guess_lang: false  
+
+extra:
+    social:
+        - icon: fontawesome/brands/bilibili
+          link: https://space.bilibili.com/504273533
+        - icon: fontawesome/brands/linkedin
+          link: https://www.linkedin.com/in/zirui-zhang-924958319/
+        - icon: fontawesome/brands/orcid
+          link: https://orcid.org/0009-0008-4156-1652
+        - icon: fontawesome/brands/github
+          link: https://github.com/ZhangzrJerry
