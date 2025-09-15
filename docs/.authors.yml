@@ -3,3 +3,23 @@ authors:
     name: Zirui Zhang
     description: ZhangzrJerry
     avatar: icon/jerry.jpg
+  frc8011:
+    name: Team 8011
+    description: Kirin
+    avatar: icon/frc8011.jpg
+  frc8811:
+    name: Team 8811
+    description: Yi Zhong Ren
+    avatar: icon/frc8811.jpg
+  frc6399:
+    name: Team 6399
+    description: Tinspiratio
+    avatar: icon/frc6399.jpg
+  frc8214:
+    name: Team 8214
+    description: Cyber Unicorn
+    avatar: icon/frc8214.jpg
+  frc9635:
+    name: Team 9635
+    description: Cyber Rabbit
+    avatar: icon/frc9635.jpg
