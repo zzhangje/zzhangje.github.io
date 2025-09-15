@@ -6,10 +6,16 @@ plugins:
   - search
   - blog:
       blog_toc: true
-      post_dir: post
+      blog_dir: .
+      categories_allowed:
+        - News
+        - Blog
+        - Notes
+  - tags
+  - glightbox
 
 nav:
-  - Home: blog/index.md
+  - Home: index.md
 
 theme:
   name: material
@@ -58,6 +64,12 @@ extra_javascript:
 markdown_extensions:
   - attr_list
   - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -80,3 +92,6 @@ extra:
           link: https://orcid.org/0009-0008-4156-1652
         - icon: fontawesome/brands/github
           link: https://github.com/ZhangzrJerry
+    analytics:
+      provider: custom
+      property: foobar

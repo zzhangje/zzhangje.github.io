@@ -1,0 +1,9 @@
+<script>
+    if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('dev.')) {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = "https://cloud.umami.is/script.js";
+        script.setAttribute('data-website-id', '61765fc4-2042-401e-801b-d8032e948a83');
+        document.head.appendChild(script);
+    }
+</script>
