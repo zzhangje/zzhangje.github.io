@@ -94,7 +94,7 @@ For small angles, this simplifies to $R \approx I + \boldsymbol{\phi}^\wedge$.
     \end{aligned}
     $$
 
-The **logarithmic map** $ \log : SO(3) \to \mathfrak{so}(3) $ extracts the axis-angle representation from a rotation matrix:
+The **logarithmic map** $\log : SO(3) \to \mathfrak{so}(3)$ extracts the axis-angle representation from a rotation matrix:
 
 $$
 \boldsymbol{\phi} = \log(R)^\vee = \frac{\|\boldsymbol{\phi}\|}{2 \sin \|\boldsymbol{\phi}\|} \begin{bmatrix}
@@ -345,16 +345,13 @@ $$
 &= \mathbf p_{wb}(t) + \mathbf{v}^w(t)\cdot\Delta t + \iint_t^{t+\Delta t}\left[{\rm R}_{wb}(\tau)(\hat{\mathbf{a}}^b(\tau)-\mathbf b^b_a(\tau)-\mathbf{n}^b_a(\tau))-\mathbf{g}^w\right]{\rm d}\tau^2 \\
 &= \mathbf p_{wb}(t) + \mathbf{v}^w(t)\cdot\Delta t -
 \frac12\mathbf{g}^w\cdot(\Delta t)^2 + \iint_t^{t+\Delta t}{\rm R}_{wb}(\tau)\left[\hat{\mathbf{a}}^b(\tau)-\mathbf b^b_a(\tau)-\mathbf{n}^b_a(\tau)\right]{\rm d}\tau^2 \\
-
 % velocity
 \mathbf{v}^w(t+\Delta t) &= \mathbf{v}^w(t) + \int_t^{t+\Delta t}\mathbf{a}^w(\tau){\rm d}\tau \\
 &= \mathbf{v}^w(t) + \int_t^{t+\Delta t}\left[{\rm R}_{wb}(\tau)(\hat{\mathbf{a}}^b(\tau)-\mathbf b^b_a(\tau)-\mathbf{n}^b_a(\tau))-\mathbf{g}^w\right]{\rm d}\tau^2 \\
 &= \mathbf{v}^w(t) - \mathbf{g}^w\cdot\Delta t + \int_t^{t+\Delta t}{\rm R}_{wb}(\tau)\left[\hat{\mathbf{a}}^b(\tau)-\mathbf b^b_a(\tau)-\mathbf{n}^b_a(\tau)\right]{\rm d}\tau^2 \\
-
 % rotation matrix
 {\rm R}_{wb}(t+\Delta t) &= \int_t^{t+\Delta t}{\rm R}_{wb}(\tau)\cdot\text{Exp}(\boldsymbol\omega^b(\tau)){\rm d}\tau \\
 &= \int_t^{t+\Delta t} {\rm R}_{wb}(\tau) \cdot \text{Exp}\left(\hat{\boldsymbol\omega}^b(\tau) - \mathbf{b}^b_g(\tau) - \mathbf{n}^b_g(\tau)\right) {\rm d}\tau \\
-
 % quaternion
 \mathbf{q}_{wb}(t+\Delta t) &= \int_t^{t+\Delta t} \mathbf{q}_{wb}(\tau) \otimes \begin{bmatrix} 0 \\ \frac12\boldsymbol\omega^b(t) \end{bmatrix} {\rm d}\tau \\
 &= \int_t^{t+\Delta t} \mathbf{q}_{wb}(\tau) \otimes \begin{bmatrix} 0 \\ \frac12\left(\hat{\boldsymbol\omega}^b(\tau) - \mathbf{b}^b_g(\tau) - \mathbf{n}^b_g(\tau)\right) \end{bmatrix} {\rm d}\tau

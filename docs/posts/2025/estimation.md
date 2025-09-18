@@ -173,8 +173,6 @@ $$
 e=Fy
 $$
 
-<CenteredImg src="/posts/2025/elec-5650/gs-process.svg" width = 90% />
-
 Then the covariance can be calculated by
 
 $$

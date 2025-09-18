@@ -58,8 +58,6 @@ $$
 
 The Geometric perspective views Kalman Filter as a Linear Minimum Mean Square Error (LMMSE) estimator, which is rooted in orthogonal projection theory in Hilbert space. The key insight is that the Kalman Filter's innovation term $e_k$ is orthogonal to all past observations $\mathcal{Y}_{k-1}$, ensuring the **new information being incorporated is statistically independent of previous measurements**, thus maintaining the estimator's optimality.
 
-<CenteredImg src="/posts/2025/elec-5650/lmmse.png" width = 80% />
-
 ### Time Update
 
 $$

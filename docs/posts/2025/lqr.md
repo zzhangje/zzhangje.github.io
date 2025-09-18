@@ -255,8 +255,6 @@ $$
 
 By seperation principle, we can decomposed the problem to an optimal estimatior and an optimal controller.
 
-<CenteredImg src="/posts/2025/elec-5650/lqg.png" width="75%" />
-
 ### Kalman Filter
 
 The Kalman filter provides the optimal state estimate $\hat{x}_k$ with error covariance $\Sigma_k$:
