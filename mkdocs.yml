@@ -15,7 +15,8 @@ plugins:
   - glightbox
 
 nav:
-  - Home: index.md
+  - News: /category/news/
+  - Posts: index.md
   - Tags: tags.md
 
 theme:
