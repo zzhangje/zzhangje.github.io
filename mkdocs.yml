@@ -16,7 +16,6 @@ plugins:
 
 nav:
   - Home: index.md
-  - Roadmap: roadmap.md
   - Tags: tags.md
 
 theme:
@@ -69,7 +68,8 @@ markdown_extensions:
   - md_in_html
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.blocks.caption
+  # - pymdownx.blocks.caption
+  # - pymdownx.captions
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.keys
