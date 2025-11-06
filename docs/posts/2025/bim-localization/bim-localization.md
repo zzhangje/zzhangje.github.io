@@ -3,7 +3,7 @@ date: 2025-05-11
 authors:
   - jerry
 categories:
-  - Notes
+  - Paper
 ---
 
 # Innovations in BIM-based Localization

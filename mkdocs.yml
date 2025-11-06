@@ -11,12 +11,13 @@ plugins:
         - News
         - Blog
         - Notes
+        - Paper
   - tags
   - glightbox
 
 nav:
-  - News: /category/news/
   - Posts: index.md
+  - News: /category/news/
   - Tags: tags.md
 
 theme:

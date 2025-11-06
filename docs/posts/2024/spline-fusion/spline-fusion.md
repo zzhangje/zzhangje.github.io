@@ -3,7 +3,7 @@ date: 2024-12-12
 authors:
   - jerry
 categories:
-  - Notes
+  - Paper
 tags:
   - slam
 ---

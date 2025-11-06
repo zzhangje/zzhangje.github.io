@@ -3,7 +3,7 @@ date: 2025-02-11
 authors:
   - jerry
 categories:
-  - Notes
+  - Blog
 tags:
   - slam
 ---

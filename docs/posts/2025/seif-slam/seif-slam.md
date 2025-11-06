@@ -3,7 +3,7 @@ date: 2025-04-30
 authors:
   - jerry
 categories:
-  - Notes
+  - Paper
 tags:
   - slam
   - math
