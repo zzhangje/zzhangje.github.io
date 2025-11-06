@@ -12,9 +12,9 @@ tags:
 
 CoTiMo represents Collision-Free Smooth Path Generation, Time-Optimal Path Parameterization, and Model Predictive Control Planner. It is a comprehensive solution for robotic motion planning.
 
-<!-- more -->
+![](https://github.com/ZhangzrJerry/CoTiMo/raw/main/assets/result.gif){width="500"}
 
-![](https://github.com/ZhangzrJerry/CoTiMo/raw/main/assets/result.gif)
+<!-- more -->
 
 This report provides a detailed explanation of the planner's core algorithmic implementations, covering key modules such as path generation, time parameterization, and model predictive control.
 

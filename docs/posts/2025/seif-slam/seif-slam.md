@@ -15,6 +15,8 @@ tags:
 
 稀疏扩展信息滤波器（SEIF）SLAM 是一种计算高效的同时定位与地图构建（SLAM）方法。通过利用信息矩阵的稀疏性，SEIF 降低了状态估计的计算复杂度，使其适用于大规模环境。
 
+![](/2025/seif-slam/2.png){width="500"}
+
 <!-- more -->
 
 ## Gaussian Probability
@@ -36,8 +38,6 @@ $$
 在标准形式中，边缘化操作只需从均值向量和协方差矩阵中移除相应的元素。然而在规范形式中，边缘化操作需要计算**舒尔补**，计算复杂度较高。条件化则相反，在标准形式中操作较为复杂，在规范形式下则相对简单。
 
 ![](./1.png)
-/// caption
-///
 
 ### Implied Conditional Independence
 
@@ -62,8 +62,6 @@ $$
 > “The meaning of a zero in an inverse covariance matrix (at location $i, j$) is conditional on all the other variables, these two variables $i$ and $j$ are independent. ... So positive off-diagonal terms in the covariance matrix always describe positive correlation; but the off-diagonal terms in the inverse covariance matrix can’t be interpreted that way. The sign of an element $(i, j)$ in the inverse covariance matrix does not tell you about the correlation between those two variables.” (MacKay and Cb, 2006, p. 4)
 
 ![](./2.png)
-/// caption
-///
 
 如果信息矩阵中的非对角元素为零，即 $\lambda_{ij} = 0 \Leftrightarrow \Psi_{ij}(\xi_i, \xi_j) = 1$，这意味着两个节点之间没有边约束，表明 $\xi_i$ 和 $\xi_j$ 条件独立。相反，如果非对角元素不为零，则表明 $\xi_i$ 和 $\xi_j$ 之间存在一条边约束，其强度正比于 $\lambda_{ij}$。这种关系很好地体现在无向图中，直观地反映了变量之间的条件独立性。使用规范形式的一个主要好处是，信息矩阵 $\Lambda$  提供了马尔可夫场的显式结构表示，清晰地揭示了变量之间的依赖关系。关于协方差矩阵和信息矩阵的更多深入理解，可以参考 David J.C. MacKay 2006 年的手稿 _The Humble Gaussian Distribution_.
 
@@ -139,8 +137,6 @@ p(\hat{\boldsymbol\xi}_{t+1}|\mathbf z_{1:t},\mathbf u_{1:t+1}) &= p(\mathbf x_{
 $$
 
 ![](./3.png)
-/// caption
-///
 
 新的状态估计服从更新后的高斯分布
 
@@ -232,8 +228,6 @@ $$
 $$
 
 ![](./4.png)
-/// caption
-///
 
 ### Discussion on Overconfidence
 

@@ -14,6 +14,8 @@ tags:
 
 这篇文章提出了一种鲁棒的视觉惯性系统初始化方法，通过松耦合的方式对齐 IMU 与视觉数据，主要解决了外参数标定、陀螺仪偏置估计、速度重力尺度和视觉惯性对齐等关键问题。
 
+![](/2024/vins-init/1.png){width="500"}
+
 <!-- more -->
 
 ## 问题建模
@@ -26,10 +28,6 @@ $$
 \hat{\mathbf a} &= \mathbf R_{bw}(\mathbf a^w+\mathbf g^w)+\mathbf b^a+\mathbf n^a
 \end{aligned}
 $$
-
-![](./1.png)
-/// caption
-///
 
 预积分
 
@@ -186,8 +184,6 @@ $$
 $\tilde{\mathbf g}^{c_0}$ 为 $2.15$ 中求得的重力向量，记 $\frac{\tilde{\mathbf g}^{c_0}}{||\tilde{\mathbf g}^{c_0}||}$ 为 $\hat{\bar{\mathbf g}}^{c_0}$
 
 ![](./2.png)
-/// caption
-///
 
 可以通过如下方式找到一组基底垂直于 $\hat{\bar{\mathbf g}}^{c_0}$
 
@@ -233,5 +229,3 @@ $$
 作者通过实验指出二者加速度计偏置 $\mathbf b^a$ 和相机与 IMU 间的平移向量 $\mathbf p_{bc}$ 对系统精度影响极小，可以不在初始化中显式优化
 
 ![](./3.png)
-/// caption
-///

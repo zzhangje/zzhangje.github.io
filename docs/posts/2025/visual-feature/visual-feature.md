@@ -12,11 +12,9 @@ tags:
 
 Experiments show that different visual descriptors tend to have similar rates of outliers in feature matching, and the precision differences brought by the application of different feature descriptors in Visual SLAM are negligible.
 
-<!-- more -->
+![](https://github.com/ZhangzrJerry/Introduction-to-Mobile-Robotics/raw/main/results/ransac.png){width="500"}
 
-![](https://github.com/ZhangzrJerry/Introduction-to-Mobile-Robotics/raw/main/results/ransac.png)
-/// caption
-///
+<!-- more -->
 
 ## SIFT: Scale-invariant Feature Transform
 
@@ -34,30 +32,22 @@ $$
 Next, according to the gradient direction of the pixels, the product of the gradient magnitudes is added to the histogram with weights based on the normal distribution probability of the distance from the center point. The direction in the histogram that corresponds to the interval from the maximum value to the 80% of maximum value is identified as the orientation of the feature point (if there are multiple candidate directions within this interval, then multiple feature points with the same other attributes are created and assigned these directions).
 
 ![](./1.jpg)
-/// caption
-///
 
 > "First the image gradient magnitudes and orientations are sampled around the keypoint location, using the scale of the keypoint to select the level of Gaussian blur for the image. In order to achieve orientation invariance, the coordinates of the descriptor and the gradient orientations are rotated relative to the keypoint orientation." (Lowe, 2004, p. 15)
 
 To pursue rotation invariance, all gradients are rotated so that the main gradient (the one with the longest magnitude) points upward. At the same time, to avoid errors caused by luminance changes, gradient magnitudes that exceed a certain threshold are clipped and then normalized.
 
 ![](./2.png)
-/// caption
-///
 
 ## SURF: Speeded Up Robust Features
 
 Compared to SIFT, which uses histograms to find the main orientation, SURF determines the main orientation of the feature point by calculating the Harr wavelet responses within a radius of $6s$ around the feature point, weighing and accumulating the $x$ and $y$ direction responses within $60$ degree sectors.
 
 ![](./3.jpg)
-/// caption
-///
 
 Around the feature point, a square box with a side length of $20s$ is taken, and its orientation is aligned with the main orientation of the feature point. This box is divided into $16$ sub-regions, and for each sub-region, the Haar wavelet features of $25$ pixels relative to the main orientation are calculated, including the sum of the horizontal and vertical values and absolute values.
 
 ![](./4.png)
-/// caption
-///
 
 ## BRIEF: Binary Robust Independent Elementary Features
 
@@ -81,16 +71,12 @@ f_{n_d}(\mathbf p) = \sum_{1\le i\le n_d}2^{i-1}\cdot\tau(\mathbf p;\mathbf x_i,
 $$
 
 ![](./5.jpg)
-/// caption
-///
 
 ## BRISK: Binary Robust Invariant Scalable Keypoints
 
 BRISK basically continues the idea of binary intensity tests.
 
 ![](./6.png)
-/// caption
-///
 
 For $N$ feature points, consider forming $N\cdot(N-1)/2$ pairs of points, and their gradients are given by the luminance difference:
 
@@ -134,12 +120,8 @@ $$
 $$
 
 ![](./exp1-1.png)
-/// caption
-///
 
 ![](./exp1-2.png)
-/// caption
-///
 
 The results showed that in most indoor scenarios, there were no significant differences in accumulated uncertainty among the three feature extractors. The average normalized error followed similar trends, with nearly identical performance. SIFT showed slightly better performance in terms of accumulated uncertainty, though the study did not include feature matching comparisons.
 
@@ -154,8 +136,6 @@ Endres et al. (2012) conducted experiments on the FR1 dataset and found that:
 - Too many features slowed down matching and increased false positives
 
 ![](./exp2.png)
-/// caption
-///
 
 The study also revealed that when there were incorrect edges in the graph, the mapping results deteriorated. The authors suggested future improvements in keypoint matching strategies, such as adding feature dictionaries, pruning unmatched features, and directly using keypoints as landmarks for nonlinear optimization.
 
@@ -168,8 +148,6 @@ Hartmann et al. (2013) conducted experiments on both RGBD datasets and their own
 - In most cases, the choice of descriptor had minimal impact on accuracy
 
 ![](./exp3.png)
-/// caption
-///
 
 These experimental results suggest that while different feature descriptors have their own characteristics, their impact on the overall performance of Visual SLAM systems might be less significant than initially thought. The choice of descriptor should be based on a balance between computational efficiency and the specific requirements of the application.
 

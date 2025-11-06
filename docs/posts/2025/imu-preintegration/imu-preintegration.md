@@ -16,11 +16,9 @@ tags:
 
 IMU preintegration is a technique in visual-inertial odometry that efficiently fuses high-frequency IMU data between keyframes. Using Lie group theory on $SE(3)$, it handles nonlinear 3D rotations and precomputes motion constraints for optimization. This method accounts for sensor biases, noise, and is essential for real-time state estimation.
 
-<!-- more -->
+![](/2025/imu-preintegration/2.png){width="500"}
 
-![](./2.png)
-/// caption
-///
+<!-- more -->
 
 ## Special Orthology Group $SO(3)$
 
@@ -150,8 +148,6 @@ $$
 For simplicity of notation, $\text{Exp}$ and $\text{Log}$ are defined as mappings between vector space $\mathbb{R}^3$ and Lie Group $SO(3)$, while $\exp$ and $\log$ operate between Lie Algebra $\mathfrak{so}(3)$ and $SO(3)$
 
 ![](./2.png)
-/// caption
-///
 
 ### Perturbation Models and Jacobians
 
