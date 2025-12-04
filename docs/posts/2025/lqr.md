@@ -6,7 +6,6 @@ categories:
   - Notes
 tags:
   - hkust
-  - math
   - control
 ---
 

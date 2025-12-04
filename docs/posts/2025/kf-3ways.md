@@ -6,7 +6,7 @@ categories:
   - Notes
 tags:
   - hkust
-  - math
+  - estimation
 ---
 
 # Kalman Filter in 3 Ways

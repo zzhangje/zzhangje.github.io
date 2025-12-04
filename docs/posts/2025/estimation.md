@@ -6,7 +6,7 @@ categories:
   - Notes
 tags:
   - hkust
-  - math
+  - estimation
 ---
 
 # Optimal Estimation Theory
