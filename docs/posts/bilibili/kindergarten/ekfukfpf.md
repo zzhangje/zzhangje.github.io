@@ -10,7 +10,7 @@ tags:
 ---
 # EKF, UKF & Partical Filter
 
-[Slide](./assets/ekfukfpf.pdf): Evolving from the classic Kalman Filter, the EKF, UKF, and Particle Filter address nonlinear estimation through local linearization, deterministic sampling, and stochastic sampling, respectively, forming the cornerstone of modern state estimation.
+[Slide](/bilibili/kindergarten/assets/ekfukfpf.pdf): Evolving from the classic Kalman Filter, the EKF, UKF, and Particle Filter address nonlinear estimation through local linearization, deterministic sampling, and stochastic sampling, respectively, forming the cornerstone of modern state estimation.
 
 <!-- more -->
 
@@ -23,8 +23,8 @@ tags:
 The previous video has been well received. In response to fans' requests, we updated the Kalman filter visualization and unscented Kalman filter.
 
 <div style="display: flex; justify-content: space-around; align-items: center;">
-    <img src="./pic/e55efe833fa9b6ad829864c98d9491ba.png" alt="Kalman Filter Visualization 1" style="width: 40%;" />
-    <img src="./pic/36dccf8005785ab50c206e57ad213368.png" alt="Kalman Filter Visualization 2" style="width: 40%;" />
+    <img src="/2025/12/04/pic/e55efe833fa9b6ad829864c98d9491ba.png" alt="Kalman Filter Visualization 1" style="width: 40%;" />
+    <img src="/2025/12/04/pic/36dccf8005785ab50c206e57ad213368.png" alt="Kalman Filter Visualization 2" style="width: 40%;" />
 </div>
 
 ### Kalman Filter Algorithm Step
@@ -108,7 +108,7 @@ The Unscented Kalman Filter takes a different approach: **Instead of approximati
 2.  **Propagate Sigma Points**: Pass each Sigma point through the nonlinear function $f$ or $h$.
 3.  **Recalculate Statistics**: Compute the new mean and covariance from the propagated points.
 
-<CenteredImg src="./pic/Pasted%20image%2020251009230042.png" width=80% />
+<CenteredImg src="/2025/12/04/pic/Pasted%20image%2020251009230042.png" width=80% />
 
 _Courtesy: Zhenhui Zhang_
 

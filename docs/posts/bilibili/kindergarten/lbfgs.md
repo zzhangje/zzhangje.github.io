@@ -10,7 +10,7 @@ tags:
 ---
 # Limit-memory BFGS Method
 
-[Slide](./assets/lbfgs.pdf): Starting with the **classical Newton's method**, we will examine its limitations and the improvements introduced by **quasi-Newton methods**. Finally, we will delve into the **L-BFGS algorithm**, which is particularly suited for large-scale problems. _Inspired by Dr. Zhepei Wang's Lecture "Numerical Optimization for Robotics"._
+[Slide](/bilibili/kindergarten/assets/lbfgs.pdf): Starting with the **classical Newton's method**, we will examine its limitations and the improvements introduced by **quasi-Newton methods**. Finally, we will delve into the **L-BFGS algorithm**, which is particularly suited for large-scale problems. _Inspired by Dr. Zhepei Wang's Lecture "Numerical Optimization for Robotics"._
 
 <PlayerBilibili videoId="BV145J1zuEPN" />
 
@@ -55,7 +55,7 @@ $$
 \mathbf{x}^{k+1} = \mathbf{x}^k - [\nabla^2f(\mathbf{x}^k)]^{-1}\nabla f(\mathbf{x}^k)
 $$
 
-<CenteredImg width=50% src="./pic/Pasted image 20250921211401.png" caption="Courtesy: Ardian Umam" />
+<CenteredImg width=50% src="/2025/12/04/pic/Pasted image 20250921211401.png" caption="Courtesy: Ardian Umam" />
 
 ### Damped Newton Method
 
@@ -87,7 +87,7 @@ $$
 
 where $c_1 \in (0, 1)$ is a small constant.
 
-<CenteredImg width=50% src="./pic/Pasted image 20250921214736.png" caption="Courtesy: Cornell University" />
+<CenteredImg width=50% src="/2025/12/04/pic/Pasted image 20250921214736.png" caption="Courtesy: Cornell University" />
 
 ## Quasi-Newton Methods
 
@@ -98,7 +98,7 @@ where $c_1 \in (0, 1)$ is a small constant.
 - **Ill-Conditioning**: Poorly conditioned Hessians amplify errors and hinder convergence.
 - **Inaccurate Model**: Local quadratic approximations may fail for complex functions, causing inefficiency or divergence.
 
-<CenteredImg width=50% src="./pic/Pasted image 20250921221840.png" />
+<CenteredImg width=50% src="/2025/12/04/pic/Pasted image 20250921221840.png" />
 
 ### Quasi-Newton Approximation
 
@@ -141,7 +141,7 @@ $$
 
 $\mathbf{B}^k$ must be PD since for all non-negative $\mathbf{g}^k$, $(\mathbf{g}^k)^\top(\mathbf{B}^k)^{-1}\mathbf{g}^k>0$.
 
-<CenteredImg width=50% src="./pic/fig_9_3_preview_2.svg" caption="Courtesy: Active Calculus" />
+<CenteredImg width=50% src="/2025/12/04/pic/fig_9_3_preview_2.svg" caption="Courtesy: Active Calculus" />
 
 ### Curvature Information
 
@@ -155,7 +155,7 @@ $$
 \mathbf{B}^{k+1}\mathbf{s}^{k}=\mathbf{y}^{k}
 $$
 
-<CenteredImg width=50% src="./pic/Pasted image 20250921225444.png" />
+<CenteredImg width=50% src="/2025/12/04/pic/Pasted image 20250921225444.png" />
 
 ### The Optimal $\mathbf{B}^{k+1}$?
 
@@ -254,7 +254,7 @@ $$
 
 Typically, $c_1=10^{-4}, c_2=0.9$.
 
-<CenteredImg width=50% src="./pic/Pasted image 20250922005849.png" caption="Courtesy: Ján Kopačka" />
+<CenteredImg width=50% src="/2025/12/04/pic/Pasted image 20250922005849.png" caption="Courtesy: Ján Kopačka" />
 
 ## L-BFGS Method
 

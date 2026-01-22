@@ -10,7 +10,7 @@ tags:
 ---
 # KKT Conditions and Optimization Techniques
 
-[Slide](./assets/kkt.pdf): This lecture begins with an introduction to the **Karush-Kuhn-Tucker (KKT) conditions**, which are fundamental in constrained optimization. We will explore their geometric interpretation, derive the necessary conditions for optimality, and discuss their applications in solving optimization problems.
+[Slide](/bilibili/kindergarten/assets/kkt.pdf): This lecture begins with an introduction to the **Karush-Kuhn-Tucker (KKT) conditions**, which are fundamental in constrained optimization. We will explore their geometric interpretation, derive the necessary conditions for optimality, and discuss their applications in solving optimization problems.
 
 <PlayerBilibili videoId="BV1MjnHzyE3a" />
 

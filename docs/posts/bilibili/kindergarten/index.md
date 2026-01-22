@@ -24,14 +24,14 @@ This is a [Bilibili series](https://space.bilibili.com/504273533/lists/6368336) 
 ### Episodes
 
 - Optimal Estimation
-  1. Kalman Filter in 3 Ways
-  1. EKF, UKF, and Particle Filter
-  1. Information Filter and Factor Graph
+    1. [Kalman Filter in 3 Ways](/2025/12/04/kalman-filter-in-3-ways/)
+    1. [EKF, UKF, and Particle Filter](/2025/12/04/ekf-ukf--partical-filter/)
+    1. [Information Filter and Factor Graph](/2025/12/04/factor-graph-for-pose-estimation/)
 - Optimal Control
-  1. LQR in 3 Ways
-  1. The duality between LQR and KF
-  1. Reinforcement Learning is Adaptive Optimal Control
+    1. [LQR in 3 Ways](/2025/12/04/linear-quadratic-regulator-in-3-ways/)
+    1. [The duality between LQR and KF](/2025/12/04/the-duality-and-the-failure-of-lqg-control/)
+    1. [Reinforcement Learning is Adaptive Optimal Control](/2025/12/04/rl-as-an-adaptive-optimal-control/)
 - Optimization
-  1. LBFGS as Quasi-Newton Method
-  1. From Lagrange Multiplier to KKT Condition
-  1. Augmented Lagrangian Method for Conic Optimization
+    1. [LBFGS as Quasi-Newton Method](/2025/12/04/limit-memory-bfgs-method/)
+    1. [From Lagrange Multiplier to KKT Condition](/2025/12/04/kkt-conditions-and-optimization-techniques/)
+    1. [Augmented Lagrangian Method for Conic Optimization](/2025/12/04/phr-conic-augmented-lagrangian-method/)

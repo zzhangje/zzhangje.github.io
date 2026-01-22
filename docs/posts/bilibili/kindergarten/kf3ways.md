@@ -10,7 +10,7 @@ tags:
 ---
 # Kalman Filter in 3 Ways
 
-[Slide](./assets/kf3ways.pdf): Discover the Kalman Filter through the **Geometric perspective** of orthogonal projection, the **Probabilistic perspective** of Bayesian filtering, and the **Optimization perspective** of weighted least squares. _Inspired by Ling Shi's 2024-25 Spring lecture "Networked Sensing, Estimation and Control"._
+[Slide](/bilibili/kindergarten/assets/kf3ways.pdf): Discover the Kalman Filter through the **Geometric perspective** of orthogonal projection, the **Probabilistic perspective** of Bayesian filtering, and the **Optimization perspective** of weighted least squares. _Inspired by Ling Shi's 2024-25 Spring lecture "Networked Sensing, Estimation and Control"._
 
 <PlayerBilibili videoId="BV1WLp8zPEvS" />
 
@@ -52,7 +52,7 @@ $$
 
 **Geometric Interpretation:**
 
-<CenteredImg src="./pic/projection_1758086370060_0.png" caption="Courtesy: https://math.stackexchange.com/users/117818/qqo" />
+<CenteredImg src="/2025/12/04/pic/projection_1758086370060_0.png" caption="Courtesy: https://math.stackexchange.com/users/117818/qqo" />
 
 ### Time Update
 

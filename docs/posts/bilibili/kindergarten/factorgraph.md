@@ -10,7 +10,7 @@ tags:
 ---
 # Factor Graph for Pose Estimation
 
-[Slide](./assets/factorgraph.pdf): Overview of factor graphs in pose estimation, emphasizing their benefits over Kalman Filters for handling complex dependencies. Covers dynamic Bayesian networks, information forms, and smoothing for efficient state estimation.
+[Slide](/bilibili/kindergarten/assets/factorgraph.pdf): Overview of factor graphs in pose estimation, emphasizing their benefits over Kalman Filters for handling complex dependencies. Covers dynamic Bayesian networks, information forms, and smoothing for efficient state estimation.
 
 <PlayerBilibili videoId="BV1S7x1zZEVS" />
 
@@ -22,7 +22,7 @@ tags:
 
 The classic Kalman Filter corresponds to a simple **Markov Chain**:
 
-<CenteredImg src="./pic/Pasted%20image%2020251009150759.png" width=50% />
+<CenteredImg src="/2025/12/04/pic/Pasted%20image%2020251009150759.png" width=50% />
 
 **Core Assumptions:**
 
@@ -58,7 +58,7 @@ The Kalman Filter, designed for a single Markov chain, cannot natively represent
 
 **Dynamic Bayesian Networks (DBNs)** provide a more flexible framework than a simple Markov chain for representing probabilistic dependencies across time.
 
-<CenteredImg src="./pic/Pasted%20image%2020251009150820.png" width=55% />
+<CenteredImg src="/2025/12/04/pic/Pasted%20image%2020251009150820.png" width=55% />
 
 **Extensions:**
 

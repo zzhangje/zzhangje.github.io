@@ -10,7 +10,7 @@ tags:
 ---
 # PHR Conic Augmented Lagrangian Method
 
-[Slide](./assets/conicalm.pdf): Starting from the penalty method, we extend to the augmented Lagrangian method for improved stability. By introducing $s$, symmetric cone constraints are integrated, forming a unified framework for solving constrained optimization problems iteratively. _Inspired by Dr. Zhepei Wang's Lecture "Numerical Optimization for Robotics"._
+[Slide](/bilibili/kindergarten/assets/conicalm.pdf): Starting from the penalty method, we extend to the augmented Lagrangian method for improved stability. By introducing $s$, symmetric cone constraints are integrated, forming a unified framework for solving constrained optimization problems iteratively. _Inspired by Dr. Zhepei Wang's Lecture "Numerical Optimization for Robotics"._
 
 <PlayerBilibili videoId="BV1EaxXzaE9g" />
 
@@ -229,7 +229,7 @@ $$
 
 |               Second Order Cone               |            Positive Definite Cone             |
 | :-------------------------------------------: | :-------------------------------------------: |
-| ![](./pic/Pasted%20image%2020251006072831.png) | ![](./pic/Pasted%20image%2020251006072849.png) |
+| ![](/2025/12/04/pic/Pasted%20image%2020251006072831.png) | ![](/2025/12/04/pic/Pasted%20image%2020251006072849.png) |
 
 ### Generalized Inequality Constraint
 

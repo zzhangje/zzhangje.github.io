@@ -10,7 +10,7 @@ tags:
 ---
 # The Duality and the Failure of LQG Control
 
-[Slide](./assets/lqgfatal.pdf): Explore the **duality** between state observers and feedback controllers, focusing on KF and LQR. Understand why combining the "**optimal observer**" with the "**optimal controller**" might fail. _Inspired by Dominikus Noll's page "A generalization of the Linear Quadratic Gaussian Loop Transfer Recovery procedure (LQG/LTR)"._
+[Slide](/bilibili/kindergarten/assets/lqgfatal.pdf): Explore the **duality** between state observers and feedback controllers, focusing on KF and LQR. Understand why combining the "**optimal observer**" with the "**optimal controller**" might fail. _Inspired by Dominikus Noll's page "A generalization of the Linear Quadratic Gaussian Loop Transfer Recovery procedure (LQG/LTR)"._
 
 <PlayerBilibili videoId="BV1rppXzoE5o"  />
 
@@ -115,7 +115,7 @@ $$
 
 where $\hat x_{k|k}$ is the state estimate provided by the Kalman filter.
 
-<CenteredImg src="./pic/lqg_20250919171224.png" width="70%" caption="'Inertial-Based LQG Control' by Daniel Engelsman" />
+<CenteredImg src="/2025/12/04/pic/lqg_20250919171224.png" width="70%" caption="'Inertial-Based LQG Control' by Daniel Engelsman" />
 
 ## The Duality
 
@@ -198,7 +198,7 @@ $$
 - Dual robustness properties at sensor output
 - Excellent margins against sensor errors
 
-<CenteredImg src="./pic/bode_lqr_lqg.png" width="70%" />
+<CenteredImg src="/2025/12/04/pic/bode_lqr_lqg.png" width="70%" />
 
 ### The Fundamental Trade-Off
 
