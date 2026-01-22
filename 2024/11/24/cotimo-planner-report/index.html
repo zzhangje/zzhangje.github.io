@@ -1,0 +1,1686 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../09/17/rotation-representations-in-robotics/">
+      
+      
+        <link rel="next" href="../../26/classic-control-quick-notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>CoTiMo Planner Report - zzhangje's posts</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script>
+    // if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('dev.')) {
+    //     const script = document.createElement('script');
+    //     script.defer = true;
+    //     script.src = "https://cloud.umami.is/script.js";
+    //     script.setAttribute('data-website-id', '61765fc4-2042-401e-801b-d8032e948a83');
+    //     document.head.appendChild(script);
+    // }
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cotimo-planner-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="zzhangje's posts" class="md-header__button md-logo" aria-label="zzhangje's posts" data-md-component="logo">
+      
+  <img src="../../../../favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            zzhangje's posts
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CoTiMo Planner Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="light-blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zzhangje/zzhangje.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Posts
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="/category/news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  News
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../archive/2025/" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../category/blog/" class="md-tabs__link">
+          
+  
+  
+  Categories
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="zzhangje's posts" class="md-nav__button md-logo" aria-label="zzhangje's posts" data-md-component="logo">
+      
+  <img src="../../../../favicon.ico" alt="logo">
+
+    </a>
+    zzhangje's posts
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zzhangje/zzhangje.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Posts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/category/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2024
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2023
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2021
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2020
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Categories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Categories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/paper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="../../../../icon/jerry.jpg" alt="Zirui Zhang">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Zirui Zhang
+                        
+                      </strong>
+                      <br>
+                      ZhangzrJerry
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"></path></svg>
+                        <time datetime="2024-11-24 00:00:00+00:00" class="md-ellipsis">November 24, 2024</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"></path></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/blog/">Blog</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
+                          <span class="md-ellipsis">
+                            
+                              11 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+            
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collision-free-smooth-path-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collision-Free Smooth Path Generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collision-Free Smooth Path Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cubic-spline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cubic Spline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimize-stretch-energy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimize Stretch Energy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collision-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collision Free
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loss-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loss Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-optimal-path-parameterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Optimal Path Parameterization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Optimal Path Parameterization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuous Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#second-order-cones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Second-Order Cones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phr-alm-for-symmetric-cones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHR ALM for Symmetric Cones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-predictive-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Predictive Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Predictive Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#swerve-kinematic-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Swerve Kinematic Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objective-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+  <nav class="md-tags">
+    
+      
+      
+      
+        
+        
+          
+        
+      
+      
+        <a href="../../../../tags/#tag:control" class="md-tag md-tag-icon md-tag--">control</a>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+<h1 id="cotimo-planner-report">CoTiMo Planner Report</h1>
+<p>CoTiMo represents Collision-Free Smooth Path Generation, Time-Optimal Path Parameterization, and Model Predictive Control Planner. It is a comprehensive solution for robotic motion planning.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/ZhangzrJerry/CoTiMo/raw/main/assets/result.gif" data-desc-position="bottom"><img alt="" src="https://github.com/ZhangzrJerry/CoTiMo/raw/main/assets/result.gif" width="500"></a></p>
+<!-- more -->
+
+<p>This report provides a detailed explanation of the planner's core algorithmic implementations, covering key modules such as path generation, time parameterization, and model predictive control.</p>
+<h2 id="collision-free-smooth-path-generation">Collision-Free Smooth Path Generation</h2>
+<h3 id="cubic-spline">Cubic Spline</h3>
+<p>For a group of certain points <span class="arithmatex">\((x_{0,1},x_{0,2},\cdots,x_{0,m}),(x_{1,1},x_{1,2},\cdots,x_{1,m}), (x_{2,1},x_{2,2},\cdots,x_{2,m}), \cdots, (x_{n,1},x_{n,2},\cdots,x_{n,m})\)</span>, we want to find a smooth enough curve that passes all these points to achieve the interpolation goal. To do so, we can use piecewise cubic functions to fitting the points.</p>
+<p>Let's talk about a specific dimention <span class="arithmatex">\(k\)</span> first. To simplify the denotation, we let <span class="arithmatex">\(x_i=x_{i,k}\)</span>. For a set of <span class="arithmatex">\(n+1\)</span> points <span class="arithmatex">\((x_{0,k},x_{1,k},x_{2,k},\cdots,x_{n,k})\)</span> and for the <span class="arithmatex">\(i\)</span>-th piece of the spline, we can represent it by</p>
+<div class="arithmatex">\[
+q_i(s)=a_is^3+b_is^2+c_is+d_i, \ \ \ \ s\in[0,1],\ i=0,1,\cdots,n-1
+\]</div>
+<p>To ensure the smooth of the curve, we write down the constraints,</p>
+<div class="arithmatex">\[
+\begin{cases}
+q_{i-1}(1)=q_i(0)=x_{i} \\
+q_{i-1}'(1)=q_i'(0) \\
+q_{i-1}''(1)=q_i''(0)
+\end{cases}
+\]</div>
+<p>Apply <span class="arithmatex">\(a_i,b_i,c_i,d_i\)</span> to the constraints, we get</p>
+<div class="arithmatex">\[
+\begin{cases}
+a_{i-1}+b_{i-1}+c_{i-1}+d_{i-1}=d_i \\
+3a_{i-1}+2b_{i-1}+c_{i-1}=c_i \\
+6a_{i-1}+2b_{i-1}=2b_i \\
+\end{cases}
+\]</div>
+<p>So we can get the following expressions</p>
+<div class="arithmatex">\[
+\begin{cases}
+a_i=x_{i+2}-2x_{i+1}+x_{i} \\
+b_i=-x_{i+2}+2x_{i+1,k}-x_{i} \\
+c_{i}=x_{i+1}-x_{i} \\
+d_i=x_{i}
+\end{cases}\ ,\ i=1,2,\cdots,n-1
+\]</div>
+<p>In open loop case, assume stationary boundary <span class="arithmatex">\(q_0'(0)=0,q_{n-1}'(1)=0\)</span>, which is <span class="arithmatex">\(c_0=0, 3a_{n-1}+2b_{n-1}+c_{n-1}=0\)</span>.</p>
+<p>You can also regard <span class="arithmatex">\(x_{n+2}\)</span> as <span class="arithmatex">\(x_{n+1}\)</span>, so that <span class="arithmatex">\(x_{n+2}-2x_{n+1}+x_n=-x_{n+1}+x_n\)</span></p>
+<p>Convert the expressions to vector form, we have</p>
+<div class="arithmatex">\[
+\left[\begin{matrix}
+a_0\\a_1\\a_2\\a_3\\\vdots\\a_{n-2}\\a_{n-1}\\
+\end{matrix}\right]=
+\left[\begin{matrix}
+2&amp;-3&amp;1&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;1&amp;-2&amp;1&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;1&amp;-2&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;1&amp;\cdots&amp;0&amp;0&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;1&amp;-2&amp;1\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;0&amp;1&amp;-1\\
+\end{matrix}\right]
+\left[\begin{matrix}
+x_0\\x_1\\x_2\\x_3\\\vdots\\x_{n-2}\\x_{n-1}\\x_{n}
+\end{matrix}\right]
+\]</div>
+<div class="arithmatex">\[
+\left[\begin{matrix}
+b_0\\b_1\\b_2\\b_3\\\vdots\\b_{n-2}\\b_{n-1}\\
+\end{matrix}\right]=
+\left[\begin{matrix}
+-3&amp;4&amp;-1&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;-1&amp;2&amp;-1&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;-1&amp;2&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;-1&amp;\cdots&amp;0&amp;0&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;-1&amp;2&amp;-1\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;0&amp;-1&amp;1\\
+\end{matrix}\right]
+\left[\begin{matrix}
+x_0\\x_1\\x_2\\x_3\\\vdots\\x_{n-2}\\x_{n-1}\\x_{n}
+\end{matrix}\right]
+\]</div>
+<div class="arithmatex">\[
+\left[\begin{matrix}
+c_0\\c_1\\c_2\\c_3\\\vdots\\c_{n-2}\\c_{n-1}\\
+\end{matrix}\right]=
+\left[\begin{matrix}
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;-1&amp;1&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;-1&amp;1&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;-1&amp;\cdots&amp;0&amp;0&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;-1&amp;1&amp;0\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;0&amp;-1&amp;1\\
+\end{matrix}\right]
+\left[\begin{matrix}
+x_0\\x_1\\x_2\\x_3\\\vdots\\x_{n-2}\\x_{n-1}\\x_{n}
+\end{matrix}\right]
+\]</div>
+<div class="arithmatex">\[
+\left[\begin{matrix}
+d_0\\d_1\\d_2\\d_3\\\vdots\\d_{n-2}\\d_{n-1}\\
+\end{matrix}\right]=
+\left[\begin{matrix}
+1&amp;0&amp;0&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;1&amp;0&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0&amp;\cdots&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;1&amp;\cdots&amp;0&amp;0&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;1&amp;0&amp;0\\
+0&amp;0&amp;0&amp;0&amp;\cdots&amp;0&amp;1&amp;0\\
+\end{matrix}\right]
+\left[\begin{matrix}
+x_0\\x_1\\x_2\\x_3\\\vdots\\x_{n-2}\\x_{n-1}\\x_{n}
+\end{matrix}\right]
+\]</div>
+<p>For every dimension in <span class="arithmatex">\(x\)</span>, we would obtain four vector <span class="arithmatex">\(a, b, c, d\)</span></p>
+<h3 id="minimize-stretch-energy">Minimize Stretch Energy</h3>
+<p>Then, we can define energy function by acceleration</p>
+<div class="arithmatex">\[
+Energy(x_0,x_1,\cdots,x_n)=\sum_{i=1}^{n-1}\int_0^1||q_i''(s)||_1{\rm d}s
+\]</div>
+<p>But in practice, I use the following formula</p>
+<div class="arithmatex">\[
+Energy(x_0,x_1,\cdots,x_n)=\sum_{i=1}^{n-1}||x_{i-1}-2x_i+x_{i+1}||^2
+\]</div>
+<h3 id="collision-free">Collision Free</h3>
+<p>We want to avoid our robot get crashed into the obstacle. So that we also need to define a potential function.</p>
+<p>First, we need to calculate the distance between the robot and the obstacle. Which is find a point <span class="arithmatex">\(o\)</span> in obstacle (<span class="arithmatex">\(Ao\leq b\)</span>), to minimize the distance from robot <span class="arithmatex">\(x\)</span> to point <span class="arithmatex">\(o\)</span></p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min\ &amp; ||o-x||^2 \\
+\text{s.t.}\ &amp;Ao\leq b
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+\min\ &amp; o^To-2x^To+x^Tx \\
+\text{s.t.}\ &amp;Ao\leq \text{b}
+\end{aligned}
+\]</div>
+<p>By SOCP, we can obtain the distance vector</p>
+<div class="arithmatex">\[
+d(x)=\left[\begin{matrix}
+d(x,o_1),d(x,o_2),\cdots,d(x,o_m)
+\end{matrix}\right]^T
+\]</div>
+<p>And the potential function would be defined as below</p>
+<div class="arithmatex">\[
+Potential(x_0,x_1,\cdots,x_n) = \sum_{i=0}^{n}\exp(||d(x_i)||_\infty)
+\]</div>
+<h3 id="loss-function">Loss Function</h3>
+<div class="arithmatex">\[
+Loss(x_0,x_1,\cdots,x_n)=\eta\cdot Energy(x_0,x_1,\cdots,x_n)+(1-\eta)\cdot Potential(x_0,x_1,\cdots,x_n)
+\]</div>
+<p>Finally, we convert the problem to an optimization problem, we can use Line Search, Quasi Newton, LBFGS, or Newton-CG to solve it.</p>
+<div class="arithmatex">\[
+\min_{x_0,x_1,\cdots,x_n}Loss(x_0,x_1,\cdots,x_n)
+\]</div>
+<p>In practice, I add some trick to make the optimizer more stable. Additional to five different <span class="arithmatex">\(\eta\)</span>, I introduce <strong>sigmoid</strong> function in update step.</p>
+<div class="arithmatex">\[
+\sigma(x)=\frac1{1+e^{-x}}=\frac{e^x}{1+e^x}=1-\sigma(-x)
+\]</div>
+<div class="arithmatex">\[
+x^{k+1}=x^{k}-\eta_k\left[2\cdot\sigma\big(\nabla Loss(x)\big)-1\right]
+\]</div>
+<h2 id="time-optimal-path-parameterization">Time Optimal Path Parameterization</h2>
+<h3 id="continuous-case">Continuous Case</h3>
+<p>After optimizing the control points <span class="arithmatex">\(x_0, x_1, \cdots, x_n\)</span>, we get a spline <span class="arithmatex">\(q\)</span> uniquely determined by arc-length <span class="arithmatex">\(s\)</span>.</p>
+<p>Then the optimal time <span class="arithmatex">\(T\)</span> is integrated by</p>
+<div class="arithmatex">\[
+T = \int_0^T 1\ {\rm d}t = \int_0^L\frac1{\frac{{\rm d}s}{{\rm d}t}}{\rm d}s
+\]</div>
+<p>Additional to <span class="arithmatex">\(q(s)\)</span>, <span class="arithmatex">\(\frac{{\rm d}q}{{\rm d}s}\)</span> and <span class="arithmatex">\(\frac{{\rm d}^2q}{{\rm d}s^2}\)</span> are also known. Because the cubic spline is second order differentiable.</p>
+<p>We also have velocity constraint,</p>
+<div class="arithmatex">\[
+-v_{max}\leq v\leq v_{max}
+\]</div>
+<p>acceleration constraint,</p>
+<div class="arithmatex">\[
+-a_{max}\leq a\leq a_{max}
+\]</div>
+<p>and always move forward constraint</p>
+<div class="arithmatex">\[
+\frac{{\rm d}s}{{\rm d}t}&gt;0
+\]</div>
+<p>The true velocity is</p>
+<div class="arithmatex">\[
+\frac{{\rm d}q}{{\rm d}t} = \frac{{\rm d}q}{{\rm d}s}\cdot\frac{{\rm d}s}{{\rm d}t}
+\]</div>
+<p>The true acceleration is</p>
+<div class="arithmatex">\[
+\frac{{\rm d}^2q}{{\rm d}t^2}=\frac{{\rm d}^2q}{{\rm d}s^2}\cdot\frac{{\rm d}s}{{\rm d}t}+\frac{{\rm d}q}{{\rm d}s}\cdot\frac{{\rm d}^2s}{{\rm d}t^2}
+\]</div>
+<p>Denote</p>
+<div class="arithmatex">\[
+a(s) = \frac{{\rm d}^2s}{{\rm d}t^2},\ b(s)=\bigg(\frac{{\rm d}s}{{\rm d}t}\bigg)^2
+\]</div>
+<p>Then the problem is described by</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_{a(s),b(s)}\ &amp; \int_0^L\frac1{\sqrt{b(s)}}{\rm d}s \\
+\text{s.t.}\ &amp; b'(s)=2a(s) \\
+&amp; q'(0)\sqrt{b(0)} = v_0 \\
+&amp; q'(L)\sqrt{b(L)} = v_L  \\
+&amp; b(s) &gt; 0\ \ \  (\geq) \\
+&amp; ||q'(s)\sqrt{b(s)}||_\infty\le v_\max \\
+&amp; ||q''(s)b(s) + q'(s)a(s) ||_\infty \le a_\max \\
+\end{aligned}
+\]</div>
+<h3 id="discrete-case">Discrete Case</h3>
+<p>Try to obtain the discretized form <span class="arithmatex">\(a\in{\mathbb R}^K,s,b\in{\mathbb R}^{K+1}\)</span>. <span class="arithmatex">\(K\)</span> is different from the number of curves or control points <span class="arithmatex">\(N\)</span> and is the result of resampling the curve. Usually <span class="arithmatex">\(K\)</span> is greater than <span class="arithmatex">\(N\)</span>.</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_{a,b} &amp; \sum_{k=1}^{K}\frac{2(s^{k+1}-s^k)}{\sqrt{b^{k+1}}+\sqrt{b^k}} \\
+{\text s.t.}\
+&amp; \frac{b^{k+1}-b^k}{s^{k+1}-s^k}=2a^k, &amp;\forall k\in[1,K]\\
+&amp; q'(s^0)\sqrt{b^0} = v_0 \\
+&amp; q'(s^{K+1})\sqrt{b^{K+1}}=v_L \\
+&amp; b^k \ge 0, &amp;\forall k\in[1,K+1] \\
+&amp; ||q'(s^k)\sqrt{b^k}||_\infty\le v_\max, &amp;\forall k\in[1,K+1] \\
+&amp; ||q''(s^k)b^k + q'(s^k)a^k ||_\infty \le a_\max, &amp;\forall k\in[1,K]\\
+\end{aligned}
+\]</div>
+<h3 id="second-order-cones">Second-Order Cones</h3>
+<p>To rewrite the problem to a second-order conic programming form, we first try to bound nonlinear term <span class="arithmatex">\(\sqrt{b^k}\)</span> with <span class="arithmatex">\(c^k\)</span>, such that <span class="arithmatex">\(\sqrt{b^k}\ge c^k,k\in[1,K+1]\)</span>. Going a step further, we introduce one more slack variable <span class="arithmatex">\(d^k\)</span>, which satisfies <span class="arithmatex">\(\frac1{c^{k+1}+c^k}\le d^k,k\in[1,K]\)</span>.</p>
+<div class="arithmatex">\[
+\min_{a,b} \sum_{k=1}^{K}\frac{2(s^{k+1}-s^k)}{\sqrt{b^{k+1}}+\sqrt{b^k}}  \Leftrightarrow\
+\begin{aligned}
+\min_{a,b,c,d} &amp;\sum_{k=1}^K 2d^k(s^{k+1}-s^k) \\
+{\text s.t.}\
+&amp; \left|\left|\begin{matrix}c^k+c^{k+1}-d^k\\2\end{matrix}\right|\right|_2\le c^{k}+c^{k+1}+d^k, &amp;\forall k\in[1,K] \\
+&amp; \left|\left|\begin{matrix}b^k-1\\2c^k\end{matrix}\right|\right|_2\le b^k+1, &amp;\forall k\in[1,K+1] \\
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+\left|\left|\begin{matrix}c^k+c^{k+1}-d^k\\2\end{matrix}\right|\right|_2\le c^{k}+c^{k+1}+d^k &amp; \Leftrightarrow \begin{bmatrix}c^k+c^{k+1}+d^k\\c^k+c^{k+1}-d^k\\2\end{bmatrix}\in{\mathcal Q^3} \\
+\left|\left|\begin{matrix}b^k-1\\2c^k\end{matrix}\right|\right|_2\le b^k+1 &amp; \Leftrightarrow \begin{bmatrix}b^k+1\\b^k-1\\2c^k\end{bmatrix}\in{\mathcal Q^3} \\
+\end{aligned}
+\]</div>
+<p>Rewriting the constraints of the optimization problem, especially the nonlinear terms <span class="arithmatex">\(\sqrt{b_k}\)</span>, we get the final objective function (2D case).</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_{a,b,c,d}&amp; \sum_{k=1}^K 2(s^{k+1}-s^k)d^k \\
+{\text s.t.}&amp;
+\begin{flalign*}
+\begin{bmatrix}c^k+c^{k+1}+d^k\\c^k+c^{k+1}-d^k\\2\end{bmatrix} &amp;\in {\mathcal Q^3}, &amp;&amp;\forall k\in[1,K] \\
+\begin{bmatrix}b^k+1\\b^k-1\\2c^k\end{bmatrix} &amp;\in {\mathcal Q^3},
+&amp;&amp;\forall k\in[1,K+1] \\
+2(s^{k+1}-s^k)a^k+b^k-b^{k+1} &amp;=0, &amp;&amp;\forall k\in[1,K] \\
+\left\{\left[q'_x(s^0)\right]^2+\left[q_y'(s^0)\right]^2\right\}(b^0)^2 &amp;= v_0^2 \\
+\left\{\left[q'_x(s^{K+1})\right]^2+\left[q_y'(s^{K+1})\right]^2\right\}(b^{K+1})^2 &amp;= v_L^2 \\
+-b^k &amp;\le 0, &amp;&amp;\forall k\in[1,K+1] \\
+\left[q'_x(s^k)\right]^2b^k &amp;\le v^2_\max, &amp;&amp;\forall k\in[1,K+1] \\
+\left[q'_y(s^k)\right]^2b^k &amp;\le v^2_\max, &amp;&amp;\forall k\in[1,K+1] \\
+\left[q''_x(s^k)\right]^2b^k+q'_x(s^k)a^k &amp;\le a_\max, &amp;&amp;\forall k\in[1,K] \\
+\left[q''_y(s^k)\right]^2b^k+q'_y(s^k)a^k &amp;\le a_\max, &amp;&amp;\forall k\in[1,K] \\
+-\left[q''_x(s^k)\right]^2b^k-q'_x(s^k)a^k &amp;\le a_\max, &amp;&amp;\forall k\in[1,K] \\
+-\left[q''_y(s^k)\right]^2b^k-q'_y(s^k)a^k &amp;\le a_\max, &amp;&amp;\forall k\in[1,K] \\
+\end{flalign*}
+\end{aligned}
+\]</div>
+<h3 id="phr-alm-for-symmetric-cones">PHR ALM for Symmetric Cones</h3>
+<p>All constraints are divided into second-order cone constraints, equality constraints and inequality constraints.</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_x\ &amp; c^Tx \\
+{\text s.t.}\
+&amp; A_i+b_i\in K_i \\
+&amp; Gx=h \\
+&amp; Px\le q \\
+\end{aligned}
+\]</div>
+<p>Therefore, we can reformulate the problem using the Augmented Lagrangian method for Symmetric Cones.</p>
+<div class="arithmatex">\[
+\begin{aligned}
+{\mathcal L}_\rho(x,\mu,\lambda,\eta) =
+&amp; c^Tx + \\
+&amp; \frac\rho2\sum_{i=1}^m ||P_{K_i}(\frac{\mu_i}\rho-A_ix-b_i)||^2 + \\
+&amp; \frac\rho2||Gx-h-\frac\lambda\rho||^2 + \\
+&amp; \frac\rho2||\max[Px-Q+\frac\eta\rho,0]||^2
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(P_{\mathcal K}\)</span> is the projection of a vector on a symmetric cone</p>
+<div class="arithmatex">\[
+P_{\mathcal K}(v)=\arg\min_{x\in\mathcal K}||v-x||^2
+\]</div>
+<p>In second order cone case,</p>
+<div class="arithmatex">\[
+P_{\mathcal K=\mathcal Q^n}(v)=\begin{cases}
+0, &amp;v_0\le-||v_1||_2 \\
+\frac{v_0+||v_1||_2}{2||v_1||_2}(||v_1||_2,v_1)^T, &amp;|v_0|&lt;||v_1||_2 \\
+v, &amp;v_0\ge||v_1||_2
+\end{cases}
+\]</div>
+<p>And the gradient of the augmented Lagrangian function is given by</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\nabla{\mathcal L}_\rho(x,\mu,\lambda,\eta) =
+&amp; c + \rho\sum_{i=1}^m A_i^TP_{K_i}(\frac{\mu_i}\rho-A_ix-b_i) + \\
+&amp; \rho G^T(Gx-h-\frac\lambda\rho) + \\
+&amp; \rho P\{\max[Px-Q+\frac\eta\rho,0]\}
+\end{aligned}
+\]</div>
+<p>So we can use a L-BFGS method to solve this convex and unconstrained function.</p>
+<div class="arithmatex">\[
+\begin{aligned}
+x &amp;\leftarrow \arg\min_x \mathcal L_\rho(x,\mu,\lambda,\eta) \\
+\mu_i &amp;\leftarrow P_{\mathcal K_i}(\mu_i-\rho(A_ix+b_i)) \\
+\lambda &amp;\leftarrow \lambda + \rho(Gx-h) \\
+\eta &amp;\leftarrow \max[\eta+\rho(Px-q),0] \\
+\rho &amp;\leftarrow \min[(1+\gamma)\rho,\beta] \\
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(\gamma\)</span> is the growth rate of <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\beta\)</span> is the upper bound of <span class="arithmatex">\(\rho\)</span>, which is typically <code>1e3</code></p>
+<h2 id="model-predictive-control">Model Predictive Control</h2>
+<h3 id="swerve-kinematic-model">Swerve Kinematic Model</h3>
+<p>A simple omnidirectional platform is mecanum wheel chassis. But for a FRC player, a swerve chassis is what we need.</p>
+<p>Consider only the translation case. Let's simply denote <span class="arithmatex">\((x,y)\)</span> for position, <span class="arithmatex">\(v\)</span> for velocity, <span class="arithmatex">\(a\)</span> for acceleration, <span class="arithmatex">\(\theta\)</span> for angle, <span class="arithmatex">\(\omega\)</span> for angular velocity, <span class="arithmatex">\(\alpha\)</span> for angular acceleration.</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+\dot x \\
+\dot y \\
+\dot v \\
+\dot \theta \\
+\dot \omega \\
+\end{bmatrix} = \begin{bmatrix}
+v\cos\theta \\
+v\sin\theta \\
+a \\
+\omega \\
+\alpha \\
+\end{bmatrix}
+\]</div>
+<p>So that, we can use the following equation to update the states in discrete time domian.</p>
+<div class="arithmatex">\[
+\begin{cases}
+v_{k+1} = v_k +a\cdot\Delta t \\
+\omega_{k+1} = \omega_k + \alpha\cdot\Delta t \\
+\theta_{k+1} = \theta_k + \frac12(\omega_k+\omega_{k+1})\cdot\Delta t \\
+x_{k+1} = x_k+\frac12(v_k\cos\theta_k+v_{k+1}\cos\theta_{k+1})\cdot\Delta t \\
+y_{k+1} = y_k+\frac12(v_k\sin\theta_k+v_{k+1}\sin\theta_{k+1})\cdot\Delta t \\
+\end{cases},\ \ u_k=\begin{bmatrix}a\\\alpha\end{bmatrix}
+\]</div>
+<h3 id="objective-function">Objective Function</h3>
+<p>Denote the number of control points of optimal control is <span class="arithmatex">\(M\)</span>, and <span class="arithmatex">\(\bar u_k=\begin{bmatrix}u_{k}^T&amp;u_{k+1}^T&amp;\cdots u_{k+M-1}^T\end{bmatrix}^T\in\mathbb R^{2M}\)</span></p>
+<div class="arithmatex">\[
+{\text Loss}(\bar u_k)=\sum_{i=0}^{M-1}\left[
+\begin{aligned}
+&amp;(x_{k+i}-\hat x_{k+1})^2+ \\
+&amp;(y_{k+i}-\hat y_{k+1})^2+ \\
+&amp;\omega_a(a_{k+i-1}-a_{k+i})^2+\\
+&amp;\omega_\alpha(\alpha_{k+i-1}-\alpha_{k+1})^2
+\end{aligned}\right]
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_{\bar u_k}\ &amp; {\text Loss}(\bar u_k) \\
+{\text s.t.}\ &amp; a_\min\le a_i\le a_\max, &amp;\forall i\in[k,k+M-1] \\
+&amp; \alpha_\min\le \alpha_i\le \alpha_\max, &amp;\forall i\in[k,k+M-1] \\
+\end{aligned}
+\]</div>
+<p>The method to solve this objective function is similar to the PHR ALM method mentioned above, except that the terms related to the symmetric cone are removed.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="zzhangje/zzhangje.github.io" data-repo-id="R_kgDOPwRS3g" data-category="General" data-category-id="DIC_kwDOPwRS3s4CvdyU" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://space.bilibili.com/504273533" target="_blank" rel="noopener" title="space.bilibili.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92c-26.4-.8-48.2-9.8-65.3-27.2S.7 396.5 0 368.2V169.8c.8-26 9.7-47.6 26.7-65.7C43.8 87.8 65.5 78.8 92 78h29.4L96 52.2c-5.7-5.7-8.6-13-8.6-21.8S90.3 14.3 96 8.6 109 0 117.9 0s16.1 2.9 21.9 8.6L213.1 78h88l74.5-69.4C381.7 2.9 389.2 0 398 0s16.1 2.9 21.9 8.6c5.7 5.7 8.6 13 8.6 21.8s-2.9 16.1-8.6 21.8L394.6 78h29.3c26.4.8 48 9.8 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96c-9.6.4-17.4 3.7-23.6 9.8-6.1 6.1-9.4 13.9-9.8 23.5v194.4c0 9.2 3.3 17 9.8 23.5s14.4 9.8 23.6 9.8h320.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/zirui-zhang-924958319/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://orcid.org/0009-0008-4156-1652" target="_blank" rel="noopener" title="orcid.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M294.7 188.2h-45.9V342h47.5c67.6 0 83.1-51.3 83.1-76.9 0-41.6-26.5-76.9-84.7-76.9M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m-80.8 360.8h-29.8V161.3h29.8zM160.3 98.5a19.6 19.6 0 1 1 0 39.2 19.6 19.6 0 1 1 0-39.2M300 369h-81V161.3h80.6c76.7 0 110.4 54.8 110.4 103.9 0 53.3-41.7 103.9-110 103.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ZhangzrJerry" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.path", "navigation.tracking", "navigation.sidebar", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.image.lightbox", "content.card"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": ["slam", "control", "math", "hkust"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../js/mathjax-config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
